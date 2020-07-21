@@ -10,7 +10,7 @@ function get_file_extension($file_name)
     }
 }
 
-
+// KELIAVIMO PER DIREKTORIJAS IR JU TURINIO GENERAVIMAS
 function go_to($path)
 {
     $path = opendir($path);
@@ -35,11 +35,11 @@ function go_to($path)
     echo '</table>';
 }
 
-
+// PRADINES DIREKTORIJOS LENTELES GENERAVIMAS
 function go_home()
 {
     $path = opendir('./');
-    echo '<table cellpadding="10">'
+    echo '<table id="home_table" cellpadding="10">'
         . '<tr class="info">'
         . '<td>' . 'TYPE' . '</td>'
         . '<td>' . 'NAME' . '</td>'
@@ -49,21 +49,14 @@ function go_home()
 
         if ($fName != '.' && $fName != '..' && $fName != '.git' && is_dir($fName)) {
             echo '<tr>' . '<td>' . get_file_extension($fName) . '</td>'
-                . '<td>' . '<a href="index.php?path='. $fName. '">' . $fName . '</td>'
+                . '<td>' . '<a onclick="test()" id="dir" href="index.php?path=' . $fName . '" >' . $fName . '</td>'
                 . '<td>' . 'PLACEHOLDER' . '</td>' . '</tr>';
-        
-                
         }
         if ($fName != '.' && $fName != '..' && is_dir($fName) == false) {
             echo '<tr>' . '<td>' . get_file_extension($fName) . '</td>'
                 . '<td>' . $fName . '</td>'
                 . '<td>' . 'PLACEHOLDER' . '</td>' . '</tr>';
-                
-                
         }
-      
-     
     }
-
     echo '</table>';
 }
