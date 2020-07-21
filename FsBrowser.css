@@ -1,0 +1,31 @@
+body {
+    background-color: #4285F4;
+}
+
+h1 {
+    color: #ffffff;
+    font-family: 'Raleway', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 72px;
+    margin: 0 0 24px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 10%;
+
+}
+
+.info {
+    background-color: #34A853;
+    color: white;
+    font-weight: 900;
+}
+
+table, tr, td {
+    border: 1px solid #FBBC05;
+    margin: 0 auto;
+    margin-top: 1%;
+    border-radius: 0.2em;
+    color: white;
+    font-weight: 900;
+}
