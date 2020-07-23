@@ -9,11 +9,13 @@ function get_file_extension($file_name)
         return pathinfo($file_name, PATHINFO_EXTENSION);
     }
 }
+?>
 
-// KELIAVIMO PER DIREKTORIJAS IR JU TURINIO GENERAVIMAS
-function go_to($path)
+<?php
+
+function go_to()
 {
-    $path = opendir($path);
+    $path = opendir('./' . str_replace('./', './' . $_GET['path'], './'));
     echo '<table cellpadding="10">'
         . '<tr class="info">'
         . '<td>' . 'TYPE' . '</td>'
@@ -22,41 +24,21 @@ function go_to($path)
         . '</tr>';
     while (($fName = readdir($path)) !== FALSE) {
 
-        if ($fName != '.' && $fName != '..' && $fName != '.git' && is_dir($fName)) {
+        if ($fName != '.' && $fName != '..' && $fName != '.git' && get_file_extension($fName) == 'dir') {
             echo '<tr>' . '<td>' . get_file_extension($fName) . '</td>'
-                . '<td>' . '<a href="index.php?' . $fName . '">' . $fName . '</td>'
+                . '<td>' . '<a href="index.php?path=' . $_GET['path'] .  '/' . $fName . '">' . $fName . '</td>'
                 . '<td>' . 'PLACEHOLDER' . '</td>' . '</tr>';
-        } else if ($fName != '.' && $fName != '..' && is_dir($fName) == false) {
+        }
+        if ($fName != '.' && $fName != '..' && get_file_extension($fName) != 'dir') {
             echo '<tr>' . '<td>' . get_file_extension($fName) . '</td>'
                 . '<td>' . $fName . '</td>'
                 . '<td>' . 'PLACEHOLDER' . '</td>' . '</tr>';
         }
     }
     echo '</table>';
-}
+    echo '$_GET path ---' . $_GET['path'] . '<br>';
+    echo '$_SERVER[QUERY_STRING] ---' . $_SERVER['QUERY_STRING']. '<br>';
+    echo '$_SERVER[REQUEST_URI]---' . $_SERVER['REQUEST_URI'];
 
-// PRADINES DIREKTORIJOS LENTELES GENERAVIMAS
-function go_home()
-{
-    $path = opendir('./');
-    echo '<table id="home_table" cellpadding="10">'
-        . '<tr class="info">'
-        . '<td>' . 'TYPE' . '</td>'
-        . '<td>' . 'NAME' . '</td>'
-        . '<td>' . 'ACTION' . '</td>'
-        . '</tr>';
-    while (($fName = readdir($path)) !== FALSE) {
-
-        if ($fName != '.' && $fName != '..' && $fName != '.git' && is_dir($fName)) {
-            echo '<tr>' . '<td>' . get_file_extension($fName) . '</td>'
-                . '<td>' . '<a onclick="test()" id="dir" href="index.php?path=' . $fName . '" >' . $fName . '</td>'
-                . '<td>' . 'PLACEHOLDER' . '</td>' . '</tr>';
-        }
-        if ($fName != '.' && $fName != '..' && is_dir($fName) == false) {
-            echo '<tr>' . '<td>' . get_file_extension($fName) . '</td>'
-                . '<td>' . $fName . '</td>'
-                . '<td>' . 'PLACEHOLDER' . '</td>' . '</tr>';
-        }
-    }
-    echo '</table>';
 }
+?>
