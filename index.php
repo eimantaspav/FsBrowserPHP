@@ -38,20 +38,29 @@ while (($fName = readdir($path)) !== FALSE) {
         echo '<tr>' . '<td>' . get_file_extension($fName) . '</td>'
             . '<td>' . '<a href="index.php?path=' . $_GET['path'] .  '/' . $fName . '">' . $fName . '</td>'
             . '<td>PLACEHOLDER</td>';
+
+
+          
+   
     }
     // NESPAUSDINAMI ./, ..', .git FOLDERIAI, FAILAI NEGAUNA <a> ELEMENTO
-    if ($fName != '.' && $fName != '..' && get_file_extension($fName) != 'dir') {
+    if ($fName != '.' && $fName != '..' && $fName != '.git' && get_file_extension($fName) != 'dir') {
         echo '<tr>' . '<td>' . get_file_extension($fName) . '</td>'
             . '<td>' . $fName . '</td>'
-            . '<td>' . 'PLACEHOLDER' . '</td>' . '</tr>';
+            . '<td>' . '<form class="form" method="get"> <input type="submit" name="del" value="DELETE"></form></td>';
     }
 }
 echo '</table>';
-// GRIZIMAS VIENA DIREKTORIJA ATGAL
-echo '<td>' . '<a href="' . dirname($_SERVER['REQUEST_URI'], 1) . '">BACK</td>';
+// GRIZIMAS VIENA DIREKTORIJA ATGAL, MYGTUKAS NEKURIAMAS PRADINEJE DIREKTORIJOJE
+if ($_SERVER['REQUEST_URI'] != '/FsBrowserPHP/' && $_SERVER['REQUEST_URI'] != '/FsBrowserPHP/index.php?path=') {
+    echo '<td>' . '<a href="' . dirname($_SERVER['REQUEST_URI'], 1) . '">BACK</td>';
+}
 echo '<br>';
-// GRIZIMAS I PRADINE DIREKTORIJA 
-echo '<td>' . '<a href="./">HOME</td>';
+// GRIZIMAS I PRADINE DIREKTORIJA, MYGTUKAS NEKURIAMAS PRADINEJE DIREKTORIJOJE 
+if ($_SERVER['REQUEST_URI'] != '/FsBrowserPHP/' && $_SERVER['REQUEST_URI'] != '/FsBrowserPHP/index.php?path=') {
+    echo '<td>' . '<a href="./">HOME</td>';
+}
+
 echo '<br>';
 // SPAUSDINAMA INFORMACIJA
 echo '$_GET path ---' . $_GET['path'] . '<br>';
