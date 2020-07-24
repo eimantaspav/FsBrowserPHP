@@ -7,6 +7,12 @@
     <link rel="stylesheet" type="text/css" href="FsBrowser.css">
     <title>Document</title>
 </head>
+<script>
+    function hi(name) {
+
+        console.log('' + name);
+    }
+</script>
 
 <body>
     <h1>Directory contents:</h1>
@@ -17,9 +23,10 @@
 </html>
 
 <?php
-
+$int123 = 123;
 // FUNKCIJU PAEMIMAS
 require 'functions.php';
+
 
 
 // KELIO KINTAMASIS, KURI PADUODU NUSKAITYTI VELIAU SU READDIR();
@@ -38,16 +45,15 @@ while (($fName = readdir($path)) !== FALSE) {
         echo '<tr>' . '<td>' . get_file_extension($fName) . '</td>'
             . '<td>' . '<a href="index.php?path=' . $_GET['path'] .  '/' . $fName . '">' . $fName . '</td>'
             . '<td>PLACEHOLDER</td>';
-
-
-          
-   
     }
     // NESPAUSDINAMI ./, ..', .git FOLDERIAI, FAILAI NEGAUNA <a> ELEMENTO
     if ($fName != '.' && $fName != '..' && $fName != '.git' && get_file_extension($fName) != 'dir') {
         echo '<tr>' . '<td>' . get_file_extension($fName) . '</td>'
             . '<td>' . $fName . '</td>'
-            . '<td>' . '<form class="form" method="get"> <input type="submit" name="del" value="DELETE"></form></td>';
+            . '<td><form method="POST">
+             <input type="hidden" name="del" value=' . str_replace(' ', '&nbsp;', $fName) . '>
+             <input type="submit" value="DELETE">
+            </form></td>';
     }
 }
 echo '</table>';
@@ -67,11 +73,18 @@ echo '$_GET path ---' . $_GET['path'] . '<br>';
 echo '$_SERVER[QUERY_STRING] ---' . $_SERVER['QUERY_STRING'] . '<br>';
 echo '$_SERVER[REQUEST_URI]---' . $_SERVER['REQUEST_URI'] . '<br>';
 
-
+// FAILO ISTRYNIMO LOGIKA
+if (isset($_POST['del'])) {
+    $pathDelFile = './' . $_GET['path'] . '/' . $_POST['del'];
+    $pathDelFileFixed = str_replace("&nbsp;", " ", htmlentities($pathDelFile, null, 'utf-8'));
+    if (is_file($pathDelFileFixed)) {
+        if (file_exists($pathDelFileFixed)) {
+            unlink($pathDelFileFixed);
+            header("Refresh:0");
+        }
+    }
+}
 
 ?>
 
 <!-- JAVA SCRIPT -->
-<script>
-
-</script>
