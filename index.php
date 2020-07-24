@@ -27,7 +27,7 @@ $int123 = 123;
 // FUNKCIJU PAEMIMAS
 require 'functions.php';
 
-
+echo '<p class="currentDir">Current directory: ' . $_GET['path'] . '</p>';
 
 // KELIO KINTAMASIS, KURI PADUODU NUSKAITYTI VELIAU SU READDIR();
 $path = opendir('./' . str_replace('./', './' . $_GET['path'], './'));
@@ -42,15 +42,15 @@ echo '<table cellpadding="10">'
 while (($fName = readdir($path)) !== FALSE) {
     // NESPAUSDINAMI ./, ..', .git FOLDERIAI, FOLDERIAMS PAGAL JU EXTENSIONO LYGYBE PRISKIRIAMAS <a> ELEMENTAS
     if ($fName != '.' && $fName != '..' && $fName != '.git' && get_file_extension($fName) == 'dir') {
-        echo '<tr>' . '<td>' . get_file_extension($fName) . '</td>'
-            . '<td>' . '<a href="index.php?path=' . $_GET['path'] .  '/' . $fName . '">' . $fName . '</td>'
-            . '<td>PLACEHOLDER</td>';
+        echo '<tr>' . '<td class="extension">' . get_file_extension($fName) . '</td>'
+            . '<td class="fnames">' . '<a href="index.php?path=' . $_GET['path'] .  '/' . $fName . '">' . $fName . '</td>'
+            . '<td class="buttons"></td>';
     }
     // NESPAUSDINAMI ./, ..', .git FOLDERIAI, FAILAI NEGAUNA <a> ELEMENTO
     if ($fName != '.' && $fName != '..' && $fName != '.git' && get_file_extension($fName) != 'dir') {
-        echo '<tr>' . '<td>' . get_file_extension($fName) . '</td>'
-            . '<td>' . $fName . '</td>'
-            . '<td><form method="POST">
+        echo '<tr>' . '<td class="extension">' . get_file_extension($fName) . '</td>'
+            . '<td class="fnames">' . $fName . '</td>'
+            . '<td class="buttons"><form method="POST">
              <input type="hidden" name="del" value=' . str_replace(' ', '&nbsp;', $fName) . '>
              <input type="submit" value="DELETE">
             </form></td>';
@@ -59,19 +59,17 @@ while (($fName = readdir($path)) !== FALSE) {
 echo '</table>';
 // GRIZIMAS VIENA DIREKTORIJA ATGAL, MYGTUKAS NEKURIAMAS PRADINEJE DIREKTORIJOJE
 if ($_SERVER['REQUEST_URI'] != '/FsBrowserPHP/' && $_SERVER['REQUEST_URI'] != '/FsBrowserPHP/index.php?path=') {
-    echo '<td>' . '<a href="' . dirname($_SERVER['REQUEST_URI'], 1) . '">BACK</td>';
+    echo '<td>' . '<a class="btn" href="' . dirname($_SERVER['REQUEST_URI'], 1) . '">BACK</a></td>';
 }
 echo '<br>';
 // GRIZIMAS I PRADINE DIREKTORIJA, MYGTUKAS NEKURIAMAS PRADINEJE DIREKTORIJOJE 
 if ($_SERVER['REQUEST_URI'] != '/FsBrowserPHP/' && $_SERVER['REQUEST_URI'] != '/FsBrowserPHP/index.php?path=') {
-    echo '<td>' . '<a href="./">HOME</td>';
+    echo '<td>' . '<a class="btn" href="./">HOME</a></td>';
 }
-
-echo '<br>';
-// SPAUSDINAMA INFORMACIJA
-echo '$_GET path ---' . $_GET['path'] . '<br>';
-echo '$_SERVER[QUERY_STRING] ---' . $_SERVER['QUERY_STRING'] . '<br>';
-echo '$_SERVER[REQUEST_URI]---' . $_SERVER['REQUEST_URI'] . '<br>';
+// JEIGU REIKES ATSISPAUSDINTI INFO
+// echo '$_GET path ---' . $_GET['path'] . '<br>';
+// echo '$_SERVER[QUERY_STRING] ---' . $_SERVER['QUERY_STRING'] . '<br>';
+// echo '$_SERVER[REQUEST_URI]---' . $_SERVER['REQUEST_URI'] . '<br>';
 
 // FAILO ISTRYNIMO LOGIKA
 if (isset($_POST['del'])) {

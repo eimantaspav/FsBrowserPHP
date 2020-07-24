@@ -8,17 +8,19 @@ h1 {
     font-size: 40px;
     font-weight: 800;
     line-height: 72px;
-    margin: 0 0 24px;
     text-align: center;
     text-transform: uppercase;
-    margin-top: 10%;
-
+    margin-top: 5%;
 }
 
 .info {
     background-color: #34A853;
     color: white;
     font-weight: 900;
+}
+
+table {
+    width: 50%;
 }
 
 table, tr, td {
@@ -28,4 +30,46 @@ table, tr, td {
     border-radius: 0.2em;
     color: white;
     font-weight: 900;
+}
+
+.fnames {
+    width: 50%;
+}
+
+.btn {
+    display: block;
+    margin-left: 25%;
+    margin-top: 10px;
+    margin-bottom: -20px;
+    width: 8%;
+    background-color: #4285F4;
+    border: 1px solid #FBBC05;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 2em;
+    border-radius: 0.05em;
+    text-align: center;
+}
+
+.buttons {
+    width: 20%;
+}
+
+.extension {
+    width: 10%;
+}
+
+.currentDir {
+    
+    display: block;
+    margin-left: 25%;
+    margin-bottom: -10px;
+    width: 50%;
+    background-color: #4285F4;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 2em;
+    border-radius: 0.05em;
 }
