@@ -1,5 +1,5 @@
 body {
-    background-color: #4285F4;
+    background-color: #162447;
 }
 
 h1 {
@@ -14,7 +14,7 @@ h1 {
 }
 
 .info {
-    background-color: #34A853;
+    background-color: #1f4068;
     color: white;
     font-weight: 900;
 }
@@ -24,7 +24,7 @@ table {
 }
 
 table, tr, td {
-    border: 1px solid #FBBC05;
+    border: 1px solid #1f4068;
     margin: 0 auto;
     margin-top: 1%;
     border-radius: 0.2em;
@@ -41,19 +41,30 @@ table, tr, td {
     margin-left: 25%;
     margin-top: 10px;
     margin-bottom: -20px;
-    width: 8%;
-    background-color: #4285F4;
-    border: 1px solid #FBBC05;
+    width: 5%;
+    background-color: #1f4068;
+    border: 1px solid #1f4068;
     color: white;
     text-decoration: none;
     font-weight: 600;
     font-size: 2em;
     border-radius: 0.05em;
     text-align: center;
+    font-size: 20px;
+}
+
+.buttonTD {
+    width: 15%;
 }
 
 .buttons {
-    width: 20%;
+    display: block;
+    float: left;
+    background-color: #1f4068;
+    color: white;
+    border: 1px solid #1f4068;
+    font-weight: 550;
+    margin-right: 5px;
 }
 
 .extension {
@@ -61,15 +72,93 @@ table, tr, td {
 }
 
 .currentDir {
-    
     display: block;
     margin-left: 25%;
     margin-bottom: -10px;
     width: 50%;
-    background-color: #4285F4;
+    background-color: #162447;
     color: white;
     text-decoration: none;
     font-weight: 600;
     font-size: 2em;
     border-radius: 0.05em;
 }
+
+.new_Dir {
+    margin-left: 25%;
+    margin-top: 10px;
+}
+
+.new_Dir>.new_Dir_submit {
+    background-color: #1f4068;
+    color: white;
+    border: 1px solid #1f4068;
+    font-weight: 550;
+}
+
+.uploadBtn1 {
+    display: block;
+    float: left;
+    background-color: #1f4068;
+    color: white;
+    border: 1px solid #1f4068;
+    font-weight: 550;
+    margin-right: 5px;
+    margin-left: 25%;
+    margin-top: -6px;
+}
+
+.uploadBtn2 {
+    display: block;
+    float: left;
+    background-color: #1f4068;
+    color: white;
+    border: 1px solid #1f4068;
+    font-weight: 550;
+    margin-right: 5px;
+    margin-top: -6px;
+}
+
+div.form {
+    display: block;
+    text-align: center;
+    margin-top: 17%;
+}
+
+form>.login {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.login_btn {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3px;
+    background-color: #1f4068;
+    color: white;
+    border: 1px solid #1f4068;
+    font-weight: 550;
+    font-size: 30px;
+}
+
+.logout_btn {
+    display: block;
+    margin-left: 25%;
+    margin-top: 10px;
+    margin-bottom: -20px;
+    width: 5%;
+    background-color: #e43f5a;
+    border: 1px solid #1f4068;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 2em;
+    border-radius: 0.05em;
+    text-align: center;
+    font-size: 20px;
+}
+
+
