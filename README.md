@@ -1,7 +1,8 @@
 # INSTRUCTIONS:
 
 1. Open visual studio and run a new terminal.
-2. Use the cd command in the terminal to change the working directory to your "Ampps" "www" folder (Example: cd "C:\Program Files\Ampps\www\ (usually the  default installation path).
+2. Use the cd command in the terminal to change the working directory to your "Ampps" "www" folder. 
+(Example: cd "C:\Program Files\Ampps\www" (it is usually the  default installation path, but please change it accordingly).
 3. If you have cloned the project before, please delete the "FsBrowserPHP" folder in the "www" folder.
 4. After making sure that you are in the "www" folder, clone the project with the following command: git clone https://github.com/eimantaspav/FsBrowserPHP.git.
 5. Open your browser enter the following page "http://localhost/FsBrowserPHP/" (without the quatation marks).
